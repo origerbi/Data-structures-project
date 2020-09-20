@@ -25,41 +25,53 @@ namespace Concordance
             Console.WriteLine("Error: " + message);
             Console.ResetColor();
         }
-        public static void PrintCorcondance(Hashtable<K, V> hashTable)
-        {
-            // TODO: COMPLETE
-        }
+        /*       public static void PrintCorcondance(Hashtable<K, V> hashTable)
+               {
+                   // TODO: COMPLETE
+               }
+
+               static void Main(string[] args)
+               {
+                   String filePath = string.Empty;
+                   String[] rowsInFile, wordsInRow;
+
+                   // Gets the file path from the user
+                   do
+                   {
+                       Console.WriteLine("Insert a .txt file path: ");
+                       filePath = Console.ReadLine();
+                       if (!File.Exists(filePath))
+                       {
+                           WriteError("File not found.");
+                           filePath = string.Empty;
+                       }
+
+                   } while (filePath.Equals(string.Empty));
+
+                   WriteSuccess("File found.");
+                   rowsInFile = File.ReadAllLines(filePath);
+                   WriteWarning("Analyzing file...");
+                   foreach (String row in rowsInFile)
+                   {
+                       wordsInRow = row.Split(' ');
+                       // TODO: COMPLETE (check if any word exists in hashtable, add new record / row index)
+                   }
+                   WriteSuccess("File analyzed completed. Here is the Concordance\n: ");
+                   PrintCorcondance(null);
+
+                   Console.ReadLine();
+               }
+       */
 
         static void Main(string[] args)
-        {
-            String filePath = string.Empty;
-            String[] rowsInFile, wordsInRow;
-
-            // Gets the file path from the user
-            do
-            {
-                Console.WriteLine("Insert a .txt file path: ");
-                filePath = Console.ReadLine();
-                if (!File.Exists(filePath))
-                {
-                    WriteError("File not found.");
-                    filePath = string.Empty;
-                }
-
-            } while (filePath.Equals(string.Empty));
-
-            WriteSuccess("File found.");
-            rowsInFile = File.ReadAllLines(filePath);
-            WriteWarning("Analyzing file...");
-            foreach (String row in rowsInFile)
-            {
-                wordsInRow = row.Split(' ');
-                // TODO: COMPLETE (check if any word exists in hashtable, add new record / row index)
-            }
-            WriteSuccess("File analyzed completed. Here is the Concordance\n: ");
-            PrintCorcondance(null);
-
-            Console.ReadLine();
+        {    
+            List<int> list = new List<int>();
+            for (int i = 10; i > 0; i--)
+                list.Add(i);
+            list.ToString();
+            
         }
+       
     }
+
 }

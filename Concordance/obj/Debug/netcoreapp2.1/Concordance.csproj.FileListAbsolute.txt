@@ -17,3 +17,9 @@ C:\Users\orige\git\Data-structures-project\Concordance\obj\Debug\netcoreapp2.1\C
 C:\Users\orige\git\Data-structures-project\Concordance\obj\Debug\netcoreapp2.1\Concordance.csproj.CoreCompileInputs.cache
 C:\Users\orige\git\Data-structures-project\Concordance\obj\Debug\netcoreapp2.1\Concordance.dll
 C:\Users\orige\git\Data-structures-project\Concordance\obj\Debug\netcoreapp2.1\Concordance.pdb
+C:\Users\orige\git\Data-structures-project\Concordance\bin\Debug\netcoreapp2.1\Concordance.deps.json
+C:\Users\orige\git\Data-structures-project\Concordance\bin\Debug\netcoreapp2.1\Concordance.runtimeconfig.json
+C:\Users\orige\git\Data-structures-project\Concordance\bin\Debug\netcoreapp2.1\Concordance.runtimeconfig.dev.json
+C:\Users\orige\git\Data-structures-project\Concordance\bin\Debug\netcoreapp2.1\Concordance.dll
+C:\Users\orige\git\Data-structures-project\Concordance\bin\Debug\netcoreapp2.1\Concordance.pdb
+C:\Users\orige\git\Data-structures-project\Concordance\obj\Debug\netcoreapp2.1\Concordance.genruntimeconfig.cache

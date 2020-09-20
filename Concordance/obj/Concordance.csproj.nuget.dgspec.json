@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\orige\\OneDrive\\Desktop\\Concordance\\Concordance\\Concordance.csproj": {}
+    "C:\\Users\\orige\\git\\Data-structures-project\\Concordance\\Concordance.csproj": {}
   },
   "projects": {
-    "C:\\Users\\orige\\OneDrive\\Desktop\\Concordance\\Concordance\\Concordance.csproj": {
+    "C:\\Users\\orige\\git\\Data-structures-project\\Concordance\\Concordance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\orige\\OneDrive\\Desktop\\Concordance\\Concordance\\Concordance.csproj",
+        "projectUniqueName": "C:\\Users\\orige\\git\\Data-structures-project\\Concordance\\Concordance.csproj",
         "projectName": "Concordance",
-        "projectPath": "C:\\Users\\orige\\OneDrive\\Desktop\\Concordance\\Concordance\\Concordance.csproj",
+        "projectPath": "C:\\Users\\orige\\git\\Data-structures-project\\Concordance\\Concordance.csproj",
         "packagesPath": "C:\\Users\\orige\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\orige\\OneDrive\\Desktop\\Concordance\\Concordance\\obj\\",
+        "outputPath": "C:\\Users\\orige\\git\\Data-structures-project\\Concordance\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\orige\\AppData\\Roaming\\NuGet\\NuGet.Config",

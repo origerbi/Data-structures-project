@@ -6,10 +6,6 @@ namespace Concordance.Classes
 {
     class List<T>
     {
-        // Fields
-        private Node<T> head;
-        private Node<T> current;  // This node looks on the last node in the list
-        private int count;
 
         // Properties
         public Node<T> Head { get; private set; }
@@ -19,8 +15,8 @@ namespace Concordance.Classes
         // Constructors
         public List()
         {
-            Head = null;
             Current = null;
+            Head = null;
             Count = 0;
         }
         public object this[int i]
@@ -33,15 +29,22 @@ namespace Concordance.Classes
         public void Add(T data)
         {
             Node<T> newNode = new Node<T>(data);
-
-            Current.Next = newNode;
-            Current = newNode;
+            if (Count == 0)
+            {
+                Head = newNode;
+                Current = newNode;
+            }
+            else
+            {
+                Current.Next = newNode;
+                Current = Current.Next;
+            }
             Count++;
         }
 
         public int IndexOf(T data)
         {
-            Node<T> trav = head;
+            Node<T> trav = Head;
             int index = 0;
 
             while (trav.Next != null)
@@ -72,10 +75,10 @@ namespace Concordance.Classes
 
             return arr;
         }
-
+/*
         private int GetMaxData()
         {
-            Node<T> trav = head;
+            Node<T> trav = Head;
             int max = Convert.ToInt32(trav.Data), currentValue;
             while (trav.Next != null)
             {
@@ -123,8 +126,24 @@ namespace Concordance.Classes
 
             for (int exp = 1; (maxData / exp) > 0; exp *= 10)
                 CountSort(arr, n, exp);
-        }
 
+            Count = 0;  // Override the existing nodes.
+            Head = null;
+            Current = null; 
+        }
+        
         public void Sort() { Radixsort(ToArray(), Count); }
+*/
+        public override string ToString()
+        {
+            Node<T> trav = Head;
+            string list = string.Empty;
+            while (trav != null)
+            {
+                list+=trav.Data + " -> ";
+                trav = trav.Next;
+            }
+            return list;
+        }
     }
 }
