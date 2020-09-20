@@ -1,61 +1,56 @@
 ﻿using System;
-//using System.Collections.Generic;
 using System.Text;
 
 namespace Concordance.Classes
 {
-    class Hashtable<K, V>
+    class HashTable
     {
-        // Fields
-        private List<K> keys;
-        private List<V> values;
-
         // Properties
-        public List<K> Keys { get; private set; }
-        public List<V> Values { get; private set; }
+        public RecordList Records { get; private set; }
 
         // Constructors
-        public Hashtable()
+        public HashTable()
         {
-            Keys = new List<K>();
-            Values = new List<V>();
+            Records = new RecordList();
         }
 
-        public Hashtable(List<K> keys, List<V> values)
+        public HashTable(Record[] records)
         {
-            Keys = keys;
-            Values = values;
-        }
-        public object this[K key]
-        {
-            get { return Values[Keys.IndexOf(key)]; }
-            set { Values[Keys.IndexOf(key)] = value; }
+            Records = new RecordList(records);
         }
 
         // Methods
-        public void Add(K key, V value)
+
+        public void Add(string key, IntList value)
         {
-            if (!Keys.Contains(key))
-            {
-                Keys.Add(key);
-                this[key] = value;
-            }
+            Records.Add( key, value);
         }
 
-        public bool ContainsKey(K key) { return Keys.Contains(key); }
-        public bool ContainsValue(V value) { return Values.Contains(value); }
-        public void Sort()
+       public bool ContainsKey(string key)
         {
-            List<V> currentValuesList = null;
-
-            //Keys.Sort();
-
-            // Sorts all the page numbers for each word in the concodance
-            for (int i = 0; i < Keys.Count; i++)
-            {
-                currentValuesList = (List<V>)Values[i];
-                currentValuesList.Sort();
-            }
+            return Records.Contains(new Record(key));
         }
+
+        public bool ContainsValue(IntList data)
+        {
+            for (int i = 0; i < Records.Count; i++)
+            {
+                if (Records[i].Value == data)
+                    return true;
+            }
+            return false;
+            
+        }
+
+        public string[] Sort()
+        {
+           return Records.QuicksortString(Records.ToKeyArray(),0,Records.Count - 1);
+        }
+
+        public override string ToString()
+        {
+            return Records.ToString();
+        }
+
     }
 }

@@ -65,11 +65,24 @@ namespace Concordance
 
         static void Main(string[] args)
         {    
-            List<int> list = new List<int>();
-            for (int i = 10; i > 0; i--)
-                list.Add(i);
-            list.ToString();
-            
+            string[] dummy = null;
+            HashTable hashTable = new HashTable();
+          
+            hashTable.Add("Ori",new IntList(new int[]{ 5, 2, 8, 1, 12, 13 }));
+            hashTable.Add("Is", new IntList(new int[] { 16, 65, 8, 864, 9, 13 }));
+            hashTable.Add("A", new IntList(new int[] { 5, 2, 65, 1, 32, 13 }));
+            hashTable.Add("Good", new IntList(new int[] { 75, 2, 8, 1, 9, 34 }));
+            hashTable.Add("Dog", new IntList(new int[] { 32, 1, 8, 86, 9, 94 }));
+            hashTable.Add("banana", new IntList(new int[] { 5, 23, 65, 42, 87, 13 }));
+            hashTable.Add("garbage", new IntList(new int[] { 5, 2, 8, 1, 9, 86 }));
+            dummy = hashTable.Sort();
+            for (int i = 0; i < hashTable.Records.Count; i++)
+            {
+                Console.WriteLine(dummy[i]);
+            }
+
+           
+             
         }
        
     }
