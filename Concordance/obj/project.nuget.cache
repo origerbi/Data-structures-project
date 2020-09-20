@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "tauYNfuY5/DE9m4zvlnp1Nqu34Vr19RtTfG1ZgSTW5al32YtXWlC42p8tY7n6WQdUZt3Ak9uEiVnn0tWd0LI5Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\orige\\OneDrive\\Desktop\\Concordance\\Concordance\\Concordance.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\orige\\.nuget\\packages\\microsoft.netcore.app\\2.1.0\\microsoft.netcore.app.2.1.0.nupkg.sha512",
+    "C:\\Users\\orige\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.1.0\\microsoft.netcore.dotnetapphost.2.1.0.nupkg.sha512",
+    "C:\\Users\\orige\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.1.0\\microsoft.netcore.dotnethostpolicy.2.1.0.nupkg.sha512",
+    "C:\\Users\\orige\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.1.0\\microsoft.netcore.dotnethostresolver.2.1.0.nupkg.sha512",
+    "C:\\Users\\orige\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.0\\microsoft.netcore.platforms.2.1.0.nupkg.sha512",
+    "C:\\Users\\orige\\.nuget\\packages\\microsoft.netcore.targets\\2.1.0\\microsoft.netcore.targets.2.1.0.nupkg.sha512",
+    "C:\\Users\\orige\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
