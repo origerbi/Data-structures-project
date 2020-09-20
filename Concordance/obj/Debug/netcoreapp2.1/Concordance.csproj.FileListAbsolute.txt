@@ -11,3 +11,9 @@ C:\Users\Admin\Desktop\Concordance\Concordance\obj\Debug\netcoreapp2.1\Concordan
 C:\Users\Admin\Desktop\Concordance\Concordance\obj\Debug\netcoreapp2.1\Concordance.pdb
 C:\Users\orige\OneDrive\Desktop\Concordance\Concordance\obj\Debug\netcoreapp2.1\Concordance.dll
 C:\Users\orige\OneDrive\Desktop\Concordance\Concordance\obj\Debug\netcoreapp2.1\Concordance.pdb
+C:\Users\orige\git\Data-structures-project\Concordance\obj\Debug\netcoreapp2.1\Concordance.csprojAssemblyReference.cache
+C:\Users\orige\git\Data-structures-project\Concordance\obj\Debug\netcoreapp2.1\Concordance.AssemblyInfoInputs.cache
+C:\Users\orige\git\Data-structures-project\Concordance\obj\Debug\netcoreapp2.1\Concordance.AssemblyInfo.cs
+C:\Users\orige\git\Data-structures-project\Concordance\obj\Debug\netcoreapp2.1\Concordance.csproj.CoreCompileInputs.cache
+C:\Users\orige\git\Data-structures-project\Concordance\obj\Debug\netcoreapp2.1\Concordance.dll
+C:\Users\orige\git\Data-structures-project\Concordance\obj\Debug\netcoreapp2.1\Concordance.pdb
