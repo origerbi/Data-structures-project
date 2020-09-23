@@ -1,6 +1,7 @@
 ﻿using Concordance.Classes;
 using System;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace Concordance
 {
@@ -11,26 +12,26 @@ namespace Concordance
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Success: " + message);
-            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.White;
         }
         public static void WriteWarning(string message)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Warning: " + message);
-            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.White;
         }
         public static void WriteError(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Error: " + message);
-            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.White;
         }
         static void Main(string[] args)
         {
             string filePath = string.Empty;
             string[] rowsInFile, wordsInRow;
             HashTable concordance = new HashTable();
-            char[] ignoredChars = { ' ', ',', '.', ':', ';', '-', '"', '?', '!' };
+            char[] ignoredChars = { ' ', ',', '.', ':', ';', '-', '"', '?', '!', '(', ')' };
             
             Console.Title = "Concordance by Ran Yunger and Ori Gerbi";
             // Gets the file path from the user
@@ -52,7 +53,7 @@ namespace Concordance
             rowsInFile = File.ReadAllLines(filePath);
             for (int i = 0; i < rowsInFile.Length; i++)
             {
-                wordsInRow = rowsInFile[i].Split(ignoredChars);
+                wordsInRow = rowsInFile[i].Split(ignoredChars, StringSplitOptions.RemoveEmptyEntries);
                 foreach (string word in wordsInRow)
                 {
                     if (!concordance.ContainsKey(word))

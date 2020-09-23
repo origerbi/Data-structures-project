@@ -172,7 +172,7 @@ namespace Concordance.Classes
                     elements[i] = elements[j];
                     elements[j] = tempStr;
 
-                    // TODO: CHECK (Swaps the records)
+                    // Swaps the records
                     tempRecord = this[i];
                     this[i] = this[j];
                     this[j] = tempRecord;
