@@ -7,14 +7,14 @@ namespace Concordance.Classes
     {
         // Properties
         public Node<int> Head { get; private set; }
-        public Node<int> Current { get; private set; }
+        public Node<int> Tail { get; private set; }
         public int Count { get; private set; }
 
         // Constructors
         public IntList()
         {
             Head = null;
-            Current = null;
+            Tail = null;
             Count = 0;
         }
         public IntList(int[] arr)
@@ -27,25 +27,25 @@ namespace Concordance.Classes
         public void Add(int data)
         {
             Node<int> newNode = new Node<int>(data);
+
             if (Count == 0)
             {
                 Head = newNode;
-                Current = newNode;
+                Tail = newNode;
             }
             else
             {
-                Current.Next = newNode;
-                Current = Current.Next;
+                Tail.Next = newNode;
+                Tail = Tail.Next;
             }
             Count++;
         }
-
         public int IndexOf(int data)
         {
             Node<int> trav = Head;
             int index = 0;
 
-            while (trav.Next != null)
+            while (trav != null)
             {
                 if (trav.Data.Equals(data))
                     return index;
@@ -56,9 +56,7 @@ namespace Concordance.Classes
 
             return -1;
         }
-
         public bool Contains(int data) { return IndexOf(data) != -1; }
-
         public int[] ToArray()
         {
             int[] arr = new int[Count];
@@ -73,20 +71,19 @@ namespace Concordance.Classes
 
             return arr;
         }
-
         public override string ToString()
         {
             Node<int> trav = Head;
-            string list = string.Empty;
+            string str = string.Empty;
 
             while (trav != null)
             {
-                list += trav.Data + " -> ";
+                str += trav.Data + "->";
                 trav = trav.Next;
             }
-            list += "|";
+            str = str.Remove(str.Length - 2, 2); // Removes the last -> in the string
 
-            return list;
+            return str;
         }
     }
 }

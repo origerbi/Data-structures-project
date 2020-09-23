@@ -7,14 +7,14 @@ namespace Concordance.Classes
     {
         // Properties
         public Node<Record> Head { get; private set; }
-        public Node<Record> Current { get; private set; }
+        public Node<Record> Tail { get; private set; }
         public int Count { get; private set; }
 
         // Constructors
         public RecordList()
         {
             Head = null;
-            Current = null;
+            Tail = null;
             Count = 0;
         }
         public RecordList(Record[] arr)
@@ -22,55 +22,71 @@ namespace Concordance.Classes
             foreach (Record item in arr)
                 Add(item);
         }
-
-        public Record this[int i]
+        private Record this[int i] // Accessing an item in the list by its index, like in array
         {
             get { return ToArray()[i]; }
-            set { ToArray()[i] = (Record)value; }
-        }
+            set
+            {
+                Node<Record> trav = Head;
 
+                for (; (i > 0) && (trav != null); i--, trav = trav.Next) ;
+                trav.Data = value;
+            }
+        }
+        public Record this[string key] // Accessing an item in the list by its key
+        {
+            get { return ContainsKey(key) ? this[IndexOfKey(key)] : null; }
+            set
+            {
+                if (ContainsKey(key))
+                    this[IndexOfKey(key)] = value;
+            }
+        }
 
         // Methods
         public void Add(Record record)
         {
             Node<Record> newNode = new Node<Record>(record);
+
             if (Count == 0)
             {
                 Head = newNode;
-                Current = newNode;
+                Tail = newNode;
             }
             else
             {
-                Current.Next = newNode;
-                Current = Current.Next;
+                Tail.Next = newNode;
+                Tail = Tail.Next;
             }
             Count++;
         }
-
         public void Add(string key, IntList value)
         {
             Node<Record> newNode = new Node<Record>(new Record(key, value));
+
             if (Count == 0)
             {
                 Head = newNode;
-                Current = newNode;
+                Tail = newNode;
             }
             else
             {
-                Current.Next = newNode;
-                Current = Current.Next;
+                Tail.Next = newNode;
+                Tail = Tail.Next;
             }
             Count++;
         }
-
-        public int IndexOf(Record data)
+        public bool Contains(Record record) { return IndexOf(record) != -1; }
+        public bool ContainsKey(string key) { return IndexOfKey(key) != -1; }
+        public bool ContainsValue(IntList value) { return IndexOfValue(value) != -1; }
+        public int IndexOf(Record record)
         {
             Node<Record> trav = Head;
             int index = 0;
 
-            while (trav.Next != null)
+            while (trav != null)
             {
-                if (trav.Data.Equals(data))
+                if (trav.Data.Equals(record))
                     return index;
 
                 index++;
@@ -79,9 +95,38 @@ namespace Concordance.Classes
 
             return -1;
         }
+        public int IndexOfKey(string key)
+        {
+            Node<Record> trav = Head;
+            int index = 0;
 
-        public bool Contains(Record data) { return IndexOf(data) != -1; }
+            while (trav != null)
+            {
+                if (trav.Data.Key.Equals(key))
+                    return index;
 
+                index++;
+                trav = trav.Next;
+            }
+
+            return -1;
+        }
+        public int IndexOfValue(IntList value)
+        {
+            Node<Record> trav = Head;
+            int index = 0;
+
+            while (trav != null)
+            {
+                if (trav.Data.Value.Equals(value))
+                    return index;
+
+                index++;
+                trav = trav.Next;
+            }
+
+            return -1;
+        }
         public Record[] ToArray()
         {
             Record[] arr = new Record[Count];
@@ -96,88 +141,66 @@ namespace Concordance.Classes
 
             return arr;
         }
-
         public string[] ToKeyArray()
         {
             Record[] recordsArr = ToArray();
             string[] keys = new string[Count];
+
             for (int i = 0; i < keys.Length; i++)
-            {
                 keys[i] = recordsArr[i].Key;
-            }
+
             return keys;
         }
-
-        public int StringCompare(string str1,string str2)
-        {
-            str1 = str1.ToLower();
-            str2 = str2.ToLower();
-            for (int i = 0; (i < str1.Length) && (i < str2.Length); i++)
-            {
-                if ((int)str1[i] == (int)str2[i])
-                    continue;
-                else
-                    return (int)str1[i] - (int)str2[i];
-            }
-
-            // Edge case for strings like 
-            // String 1="Geeky" and String 2="Geekyguy" 
-            if (str1.Length < str2.Length)
-                return (str1.Length - str2.Length);
-            else if (str1.Length > str2.Length)
-                return (str1.Length - str2.Length);
-            // If none of the above conditions is true, 
-            // it implies both the strings are equal 
-            return 0;
-        }
-
-
-        public string[] QuicksortString(string[] elements, int left, int right)
+      
+        public string[] Quicksortstring(string[] elements, int left, int right)
         {
             int i = left, j = right;
-            string pivot = elements[(left + right) / 2];
+            string tempStr, pivot = elements[(left + right) / 2];
+            Record tempRecord;
 
             while (i <= j)
             {
-                while (StringCompare(elements[i],pivot) < 0)
+                while (elements[i].CompareTo(pivot) < 0)
                     i++;
-
-                while (StringCompare(elements[j], pivot) > 0)
+                while (elements[j].CompareTo(pivot) > 0)
                     j--;
 
                 if (i <= j)
                 {
-                    // Swap
-                    string tmp = elements[i];
+                    // Swaps the strings 
+                    tempStr = elements[i];
                     elements[i] = elements[j];
-                    elements[j] = tmp;
+                    elements[j] = tempStr;
+
+                    // TODO: CHECK (Swaps the records)
+                    tempRecord = this[i];
+                    this[i] = this[j];
+                    this[j] = tempRecord;
 
                     i++;
                     j--;
                 }
-                
             }
-            // Recursive calls
 
             if (left < j)
-                QuicksortString(elements, left, j);
+                Quicksortstring(elements, left, j);
             if (i < right)
-                QuicksortString(elements, i, right);
+                Quicksortstring(elements, i, right);
 
             return elements;
         }
-
         public override string ToString()
         {
             Node<Record> trav = Head;
-            string list = string.Empty;
+            string str = string.Empty;
+
             while (trav != null)
             {
-                list += trav.Data.ToString() + "\n";
+                str += trav.Data.ToString() + "\n";
                 trav = trav.Next;
             }
 
-            return list;
+            return str;
         }
     }
 }

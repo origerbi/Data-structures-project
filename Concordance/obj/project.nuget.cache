@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8OgpfAI750mPzgfwDHYZUqRoqkIqeb1pieI8l9RJC73fQD8YWLnJea7pM17baJFPvcqAdT6WN7+UNsdnJWmLrQ==",
+  "dgSpecHash": "krFZ7q9++A9RMY8HUQ0Pb0KcGDSQsZzwzzv/yIVglJ4G3Og8VrStOjvqt63bzFAluqJjhIxEru+ItMRVkrV3gw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\orige\\git\\Data-structures-project\\Concordance\\Concordance.csproj",
+  "projectFilePath": "C:\\Users\\orige\\git\\Concordance\\Concordance\\Concordance.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\orige\\.nuget\\packages\\microsoft.netcore.app\\2.1.0\\microsoft.netcore.app.2.1.0.nupkg.sha512",
     "C:\\Users\\orige\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.1.0\\microsoft.netcore.dotnetapphost.2.1.0.nupkg.sha512",

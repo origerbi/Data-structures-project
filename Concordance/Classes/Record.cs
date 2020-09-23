@@ -10,13 +10,11 @@ namespace Concordance.Classes
         public IntList Value { get; private set; }
 
         // Constructors
-
         public Record(string key)
         {
             Key = key;
             Value = new IntList();
         }
-
         public Record(string key,IntList value)
         {
             Key = key;

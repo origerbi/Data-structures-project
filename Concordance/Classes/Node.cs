@@ -1,5 +1,4 @@
 ﻿using System;
-//using System.Collections.Generic;
 using System.Text;
 
 namespace Concordance.Classes
@@ -7,13 +6,13 @@ namespace Concordance.Classes
     class Node<T>
     {
         // Properties
-        public T Data { get; private set; }
+        public T Data { get; set; }
         public Node<T> Next { get; set; }
 
         // Constructors
         public Node()
         {
-            Data = default(T);
+            Data = default;
             Next = null;
         }
         public Node(T data)
