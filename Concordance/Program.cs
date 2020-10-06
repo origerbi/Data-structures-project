@@ -1,7 +1,9 @@
 ﻿using Concordance.Classes;
 using System;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace Concordance
 {
@@ -28,11 +30,10 @@ namespace Concordance
         }
         static void Main(string[] args)
         {
-            string filePath = string.Empty;
+            string filePath = string.Empty, capitalizedWord = string.Empty;
             string[] rowsInFile, wordsInRow;
             HashTable concordance = new HashTable();
-            char[] ignoredChars = { ' ', ',', '.', ':', ';', '-', '"', '?', '!', '(', ')' };
-            
+            string[] seperators = { " ", ",", ".", ":", ";", "-", "\"", "?", "!", "(", ")","'s","'", "–"};
             Console.Title = "Concordance by Ran Yunger and Ori Gerbi";
             // Gets the file path from the user
             do
@@ -46,27 +47,29 @@ namespace Concordance
                 }
 
             } while (filePath.Equals(string.Empty));
-
+            
             Console.Clear();
             WriteSuccess(string.Format("File found: \"{0}\"", filePath));
             WriteWarning("Analyzing file...");
             rowsInFile = File.ReadAllLines(filePath);
             for (int i = 0; i < rowsInFile.Length; i++)
             {
-                wordsInRow = rowsInFile[i].Split(ignoredChars, StringSplitOptions.RemoveEmptyEntries);
-                foreach (string word in wordsInRow)
+                wordsInRow = rowsInFile[i].Split(seperators, StringSplitOptions.RemoveEmptyEntries);
+                for (int wordOffset = 0; wordOffset < wordsInRow.Length; wordOffset++)
                 {
-                    if (!concordance.ContainsKey(word))
-                        concordance.Add(word, new IntList());
-                    if (!concordance[word].Value.Contains(i + 1))
-                        concordance[word].Value.Add(i + 1);
+                    capitalizedWord = wordsInRow[wordOffset];
+                    capitalizedWord = char.ToUpper(capitalizedWord[0]) + capitalizedWord.Substring(1);  // to uppertCase
+                    if (!concordance.ContainsKey(capitalizedWord))
+                        concordance.Add(capitalizedWord, new IntList());
+                    concordance[capitalizedWord].Value.Add(i + 1);
                 }
             }
             concordance.Sort();
 
             WriteSuccess("File analyze completed.");
-            Console.WriteLine("Here's the Concordance for the given file:");
-            Console.WriteLine(concordance.ToString());
+            using (StreamWriter sw = File.CreateText(Environment.CurrentDirectory + "\\ConcordanceOutput.txt"))
+                sw.WriteLine(concordance.ToString());
+            Console.WriteLine("The Concordance for the given file can be found in ConcordanceOutput.txt");
 
             Console.ReadLine();
         }

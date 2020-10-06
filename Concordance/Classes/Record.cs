@@ -24,7 +24,7 @@ namespace Concordance.Classes
         // Methods
         public override string ToString()
         {
-            return string.Format("[{0} : {1}]", Key, Value.ToString());
+            return string.Format("[Word: \"{0}\" | Appearances: {1}]", Key, Value.ToString());
         }
     }
 }
