@@ -1,9 +1,6 @@
 ﻿using Concordance.Classes;
 using System;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Concordance
 {
@@ -33,7 +30,7 @@ namespace Concordance
             string filePath = string.Empty, capitalizedWord = string.Empty;
             string[] rowsInFile, wordsInRow;
             HashTable concordance = new HashTable();
-            string[] seperators = { " ", ",", ".", ":", ";", "-", "\"", "?", "!", "(", ")","'s","'", "–"};
+            string[] seperators = { " ", ",", ".", ":", ";", "/", "\\", "-", "\"", "“", "”", "?", "!", "(", ")", "[", "]", "{", "}", "'s", "'", "–", "—", "*"};
             Console.Title = "Concordance by Ran Yunger and Ori Gerbi";
             // Gets the file path from the user
             do
@@ -57,8 +54,7 @@ namespace Concordance
                 wordsInRow = rowsInFile[i].Split(seperators, StringSplitOptions.RemoveEmptyEntries);
                 for (int wordOffset = 0; wordOffset < wordsInRow.Length; wordOffset++)
                 {
-                    capitalizedWord = wordsInRow[wordOffset];
-                    capitalizedWord = char.ToUpper(capitalizedWord[0]) + capitalizedWord.Substring(1);  // to uppertCase
+                    capitalizedWord = wordsInRow[wordOffset].ToUpper();
                     if (!concordance.ContainsKey(capitalizedWord))
                         concordance.Add(capitalizedWord, new IntList());
                     concordance[capitalizedWord].Value.Add(i + 1);
